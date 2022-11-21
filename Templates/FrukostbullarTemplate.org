@@ -1,0 +1,29 @@
+
+
+
+
+* Ingredienser:
+
+| Ingrediens       | Mängd                |
+|------------------+----------------------|
+| Vetemjöl [kg]    | %^{Vetemjöl [kg]}    |
+| Havregryn [kg]   | %^{Havregryn [kg]}   |
+| Rågmjöl [kg]     | %^{Rågmjöl [kg]}     |
+| Grahamsmjöl [kg] | %^{Grahamsmjöl [kg]} |
+| Vatten [kg]      | %^{Vatten [kg]}      |
+| Hydrering:       |                      |
+| Salt [msk]       | %?                   |
+| Olja [dl]        |                      |
+| Sirap [msk]      |                      |
+#+TBLFM: @7$2=@6$2*100/vsum(@2$2..@5$2);%0.1f
+
+
+* Metod:
+| Steg              | Tid |
+|-------------------+-----|
+| I kyl             |     |
+| Ur kyl            |     |
+| Utbakade          |     |
+| Första plåt i ugn |     |
+
+* Anteckningar:
