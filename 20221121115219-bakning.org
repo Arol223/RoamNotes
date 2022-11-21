@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       43cb7c8a-9d1f-4cbb-845d-da36874431b7
+:END:
+#+title: Bakning
+Recept och historia för bakning, inklusive kommentarer till recept:
+
+
+- [[id:c58d0b2e-3da3-40c1-9dd7-9923c534a5d9][Frukostbullar]]

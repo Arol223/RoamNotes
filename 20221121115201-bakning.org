@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       87e732a8-e5c8-427b-a27d-9b97cd27a23c
+:END:
+#+title: Bakning
+
+* Här är mina brödrecept:
+** [[id:c58d0b2e-3da3-40c1-9dd7-9923c534a5d9][Frukostbullar]]
+* Syltrecept:
+** [[id:ed84503b-76d2-46ac-871c-c8961cee936d][Jordgubbssylt]]

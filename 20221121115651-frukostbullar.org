@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       c58d0b2e-3da3-40c1-9dd7-9923c534a5d9
+:END:
+#+title: Frukostbullar
+Här är historiken för min frukostbullsbakning:
+- [[id:e561a476-b45f-4c79-b9d9-b017eacce35c][21/11-2022]]
+- [[id:d07dbbfa-4dd1-4265-a4ec-05ff8f9c971a][1/11-2022]]
+- [[id:185a26b4-a33c-406f-a45b-2184d2d1984e][18/10-2022]]
+- [[id:13fac590-4bc6-4fb6-9732-a54e100589dd][ 2/10-2022]]
+-

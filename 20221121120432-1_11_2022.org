@@ -1,0 +1,20 @@
+:PROPERTIES:
+:ID:       d07dbbfa-4dd1-4265-a4ec-05ff8f9c971a
+:END:
+#+title: 1/11-2022
+* Ingredienser:
+** Mjöl och vatten
+| Ingrediens  | Mängd [kg] |
+|-------------+------------|
+| Vatten      |        1.5 |
+| Rågmjöl     |       0.25 |
+| Grahamsmjöl |       0.25 |
+| Havregryn   |      0.107 |
+| Vetemjöl    |        1.4 |
+| Hydrering:  |       74.7 |
+#+TBLFM: @7$2=@2$2*100/vsum(@3$2..@6$2);%0.1f
+
+** Olja, salt och sirap/honung:
+| Ingrediens | Mängd |
+|------------+-------|
+| Salt       | 2 msk |
