@@ -51,11 +51,6 @@
     path = folder + file
     return pd.read_csv(path, index_col=index_col, skipinitialspace=True)
 #+END_SRC
-
-#+RESULTS:
-
-#+RESULTS:
-#+RESULTS:
 *** Convenience function for dropping zeros and returning new df
 #+BEGIN_SRC python :session orgsession :async yes :pandoc t -n 1
   def drop_zeros(df):
@@ -64,10 +59,60 @@
     return df2
 #+END_SRC
 
-#+RESULTS:
+*** Conveniently show correlation matrix for df
 #+begin_src python :session orgsession :async yes :pandoc t -n 1
+  def show_corrmat(df):
+      corr = df.corr()
+      f = plt.figure(figsize=(20, 20))
+      plt.matshow(corr, fignum=f.number)
+      plt.xticks(range(df.select_dtypes(['number']).shape[1]), df.select_dtypes(['number']).columns, fontsize=14, rotation=45)
+      plt.yticks(range(df.select_dtypes(['number']).shape[1]), df.select_dtypes(['number']).columns, fontsize=14)
+      cb = plt.colorbar()
+      cb.ax.tick_params(labelsize=14)
+      plt.title('Correlation Matrix', fontsize=16);
+#+END_SRC
 
+*** Calculate stability index and find separated generators
+#+BEGIN_SRC python :session orgsession :async yes :pandoc t
+  def stab_index(df, lim=180, abs_clt=0, verbose=False,):
+    """Caclulate the stability index of a df containing the rotor angles from a case"""
+    sub = df.to_numpy()[abs_clt:, :]
+    diff_mat = np.zeros([sub.shape[0], np.sum(np.arange(sub.shape[1]))])
+    for i in range(sub.shape[1]):
+      for j in range(i + 1, sub.shape[1]):
+        diff_mat[:, i+j-1] = np.abs(sub[:,i] - sub[:,j])
+
+    delta_max = np.max(np.max(diff_mat))
+    separated = np.where(diff_mat >= lim)
+    stab_ind = (lim - delta_max)/(lim + delta_max)
+    if verbose:
+      print(f"Stability index is {stab_ind}, maximum delta is {delta_max}")
+    return stab_ind, separated
+#+END_SRC
+
+#+RESULTS:
+*** Find the column numbers of a difference matrix
+The difference matrix is defined in the stab index function, and is
+defined as the matrix of differences of all columns in the dataframe
+(used here to calculate the stability index, because it gives the
+differences in rotor angle for all generators at all timesteps). It
+will only be used in cases where the number of generators are known,
+to avoid solving any quadratic equations
+#+begin_src python :session orgsession :async yes :pandoc t
+  def get_columns(idx, n_generators):
+    i_map = np.insert( np.cumsum( np.arange(n_generators-1, 0, -1)) - 1, 0, 0) # -1 for appropriate python indexing
+    gens = []
+    #print(i_map)
+    for i, j in enumerate(i_map):
+      if idx <= j:
+        gen1 = i - 1
+        gen2 = idx - i_map[i-1] + 1
+        break
+    return [gen1, gen2]
 #+end_src
+
+#+RESULTS:
+
 ** Test clustering with one DF:
 :LOGBOOK:
 CLOCK: [2022-12-02 Fri 13:56]
@@ -284,54 +329,16 @@ CLOCK: [2022-12-02 Fri 13:56]
   print(stability_df.iloc[:,8])
 #+end_src
 
-#+RESULTS:
-:RESULTS:
-#+begin_src python :session orgsession :async yes :pandoc t -n 1
-df_no_zeros = df.drop(labels = ["VA_VATTENDRAGET_G1", "VA_STUPET_G3", "VA_HASTSJO_G1"], axis=1)
-#+end_src
-
 #+BEGIN_SRC python :session orgsession :async yes :pandoc t -n 1
-  corr = df_no_zeros.corr()
-  f = plt.figure(figsize=(20, 20))
-  plt.matshow(corr, fignum=f.number)
-  plt.xticks(range(df_no_zeros.select_dtypes(['numnber']).shape[1]), df_no_zeros.select_dtypes(['number']).columns, fontsize=14, rotation=45)
-  plt.yticks(range(df_no_zeros.select_dtypes(['number']).shape[1]), df_no_zeros.select_dtypes(['number']).columns, fontsize=14)
-  cb = plt.colorbar()
-  cb.ax.tick_params(labelsize=14)
-  plt.title('Correlation Matrix', fontsize=16);
-#+END_SRC
-
-#+RESULTS:
-[[file:./.ob-jupyter/98afc206bbda10ff61c9dd70cc3cb1a1477de37d.png]]
-
-#+begin_src python :session orgsession :async yes :pandoc t -n 1
-  df_no_zeros.plot(subplots=True)
-#+end_src
-
-#+BEGIN_SRC python :session orgsession :async yes :pandoc t -n 1
-  df2 = get_gen_df(0)
-#+END_SRC
-
-#+BEGIN_SRC python :session orgsession :async yes :pandoc t -n 1
-  df2_nz = drop_zeros(df2)
+  df2 = get_gen_df(1)
+  df2 = drop_zeros(df2)
 #+END_SRC
 
 #+RESULTS:
 
 #+begin_src python :session orgsession :async yes :pandoc t -n 1
-  corr = df2_nz.corr()
-  f = plt.figure(figsize=(20, 20))
-  plt.matshow(corr, fignum=f.number)
-  plt.xticks(range(df2_nz.select_dtypes(['number']).shape[1]), df2_nz.select_dtypes(['number']).columns, fontsize=14, rotation=45)
-  plt.yticks(range(df2_nz.select_dtypes(['number']).shape[1]), df2_nz.select_dtypes(['number']).columns, fontsize=14)
-  cb = plt.colorbar()
-  cb.ax.tick_params(labelsize=14)
-  plt.title('Correlation Matrix', fontsize=16);
+show_corrmat(df2)
 #+end_src
 
 #+RESULTS:
-[[file:./.ob-jupyter/ce7c48c1a8454b007385012720e8ed4ee1ea21af.png]]
-:RESULTS:
-:END:
-#+RESULTS:
-: 0
+[[file:./.ob-jupyter/e177560363fdb6794b457de80a2a6176b0c2ba7f.png]]
