@@ -17,6 +17,10 @@
   from sklearn.preprocessing import StandardScaler as SS
   from sklearn.cluster import KMeans
   from sklearn.decomposition import PCA
+  # Plotly imports
+  import plotly as py
+  import plotly.graph_objs as go
+  from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 #+END_SRC
 
 #+RESULTS:
@@ -50,6 +54,20 @@
 
 #+RESULTS:
 
+#+RESULTS:
+#+RESULTS:
+*** Convenience function for dropping zeros and returning new df
+#+BEGIN_SRC python :session orgsession :async yes :pandoc t -n 1
+  def drop_zeros(df):
+    zero_cols = [col for col in df.columns if df[col].sum() == 0]
+    df2 = df.drop(labels = zero_cols, axis=1)
+    return df2
+#+END_SRC
+
+#+RESULTS:
+#+begin_src python :session orgsession :async yes :pandoc t -n 1
+
+#+end_src
 ** Test clustering with one DF:
 :LOGBOOK:
 CLOCK: [2022-12-02 Fri 13:56]
@@ -59,6 +77,15 @@ CLOCK: [2022-12-02 Fri 13:56]
 #+END_SRC
 
 #+RESULTS:
+:RESULTS:
+# [goto error]
+: [0;31m---------------------------------------------------------------------------[0m
+: [0;31mNameError[0m                                 Traceback (most recent call last)
+: Cell [0;32mIn [6], line 1[0m
+: [0;32m----> 1[0m df [38;5;241m=[39m [43mget_gen_df[49m([38;5;241m0[39m)
+:
+: [0;31mNameError[0m: name 'get_gen_df' is not defined
+:END:
 
 #+BEGIN_SRC python :session orgsession :async yes :pandoc t -n 1
   dataset = df.values.T
@@ -66,13 +93,31 @@ CLOCK: [2022-12-02 Fri 13:56]
 #+END_SRC
 
 #+RESULTS:
-: (39, 1002)
+:RESULTS:
+# [goto error]
+: [0;31m---------------------------------------------------------------------------[0m
+: [0;31mNameError[0m                                 Traceback (most recent call last)
+: Cell [0;32mIn [7], line 1[0m
+: [0;32m----> 1[0m dataset [38;5;241m=[39m [43mdf[49m[38;5;241m.[39mvalues[38;5;241m.[39mT
+: [1;32m      2[0m [38;5;28mprint[39m(dataset[38;5;241m.[39mshape)
+:
+: [0;31mNameError[0m: name 'df' is not defined
+:END:
 
 #+begin_src python :session orgsession :async yes :pandoc t -n 1
   clstr = AF().fit(dataset)
 #+end_src
 
 #+RESULTS:
+:RESULTS:
+# [goto error]
+: [0;31m---------------------------------------------------------------------------[0m
+: [0;31mNameError[0m                                 Traceback (most recent call last)
+: Cell [0;32mIn [8], line 1[0m
+: [0;32m----> 1[0m clstr [38;5;241m=[39m [43mAF[49m()[38;5;241m.[39mfit(dataset)
+:
+: [0;31mNameError[0m: name 'AF' is not defined
+:END:
 
 #+begin_src python :session orgsession :async yes :pandoc t -n 1
   labels = clstr.labels_
@@ -81,22 +126,17 @@ CLOCK: [2022-12-02 Fri 13:56]
 #+end_src
 
 #+RESULTS:
-#+begin_example
-  [1 1 1 1 0 0 0 0 0 0 0 0 1 3 1 1 0 0 1 1 0 1 1 1 1 1 2 0 3 3 3 3 3 3 2 2 1
-   3 0]
-  Index(['VA_AGGAN_G1', 'VA_AGGAN_G2', 'VA_ATOMSBERG_G1', 'VA_BLOCKET_G1',
-         'VA_BLOCKET_G2', 'VA_DALBO_G1', 'VA_ERIKSHAMN_G1', 'VA_ERIKSHAMN_G2',
-         'VA_HAMMARVATTNET_G1', 'VA_HALLAN_G1', 'VA_HALLAN_G2', 'VA_HALLAN_G3',
-         'VA_HALLAN_G4', 'VA_HASTSJO_G1', 'VA_HASTSJO_G2', 'VA_JAURAS_G1',
-         'VA_KARNAN_G1', 'VA_KARNAN_G2', 'VA_KARNAN_G3', 'VA_NJAGGO_G1',
-         'VA_NORRSELE_G1', 'VA_NORRSELE_G2', 'VA_OLMAFALLET_G1',
-         'VA_RUTHUVUD_G1', 'VA_RUTHUVUD_G2', 'VA_RUTHUVUD_G3',
-         'VA_STENFORSEN_G1', 'VA_STORFORS_G1', 'VA_STORTRASK_G1', 'VA_STORAN_G1',
-         'VA_STUPET_G1', 'VA_STUPET_G2', 'VA_STUPET_G3', 'VA_STUPET_G4',
-         'VA_SYDBACK_G1', 'VA_SYDBACK_G2', 'VA_TROLLFALLEN_G1',
-         'VA_VATTENDRAGET_G1', 'VA_YTTERFORSEN_G1'],
-        dtype='object')
-#+end_example
+:RESULTS:
+# [goto error]
+: [0;31m---------------------------------------------------------------------------[0m
+: [0;31mNameError[0m                                 Traceback (most recent call last)
+: Cell [0;32mIn [9], line 1[0m
+: [0;32m----> 1[0m labels [38;5;241m=[39m [43mclstr[49m[38;5;241m.[39mlabels_
+: [1;32m      2[0m [38;5;28mprint[39m(labels)
+: [1;32m      3[0m [38;5;28mprint[39m(df[38;5;241m.[39mcolumns)
+:
+: [0;31mNameError[0m: name 'clstr' is not defined
+:END:
 
 #+BEGIN_SRC python :session orgsession :async yes :pandoc t -n 1
   corr = df.corr()
@@ -110,7 +150,7 @@ CLOCK: [2022-12-02 Fri 13:56]
 #+END_SRC
 
 #+RESULTS:
-[[file:./.ob-jupyter/6bc1f0e7d58757434a2a24f45bc15112f2394c51.png]]
+[[file:./.ob-jupyter/a9b9b0ccd9e2cb55ec56f5735518e256d95fce4f.png]]
 
 #+BEGIN_SRC python :session orgsession :async yes :pandoc t -n 1
   df.iloc[:, 0:5].plot(subplots=True)
@@ -118,10 +158,13 @@ CLOCK: [2022-12-02 Fri 13:56]
 
 #+RESULTS:
 :RESULTS:
-: array([<AxesSubplot: xlabel='Time:'>, <AxesSubplot: xlabel='Time:'>,
-:        <AxesSubplot: xlabel='Time:'>, <AxesSubplot: xlabel='Time:'>,
-:        <AxesSubplot: xlabel='Time:'>], dtype=object)
-[[file:./.ob-jupyter/1458790a47a48ed1012a07360d201e4bf964707b.png]]
+# [goto error]
+: [0;31m---------------------------------------------------------------------------[0m
+: [0;31mNameError[0m                                 Traceback (most recent call last)
+: Cell [0;32mIn [11], line 1[0m
+: [0;32m----> 1[0m [43mdf[49m[38;5;241m.[39miloc[:, [38;5;241m0[39m:[38;5;241m5[39m][38;5;241m.[39mplot(subplots[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+:
+: [0;31mNameError[0m: name 'df' is not defined
 :END:
 
 #+BEGIN_SRC python :session orgsession :async yes :pandoc t -n 1
@@ -130,10 +173,13 @@ CLOCK: [2022-12-02 Fri 13:56]
 
 #+RESULTS:
 :RESULTS:
-: array([<AxesSubplot: xlabel='Time:'>, <AxesSubplot: xlabel='Time:'>,
-:        <AxesSubplot: xlabel='Time:'>, <AxesSubplot: xlabel='Time:'>,
-:        <AxesSubplot: xlabel='Time:'>], dtype=object)
-[[file:./.ob-jupyter/e5fc5ebf5862580ab76787711be1b9f20df5138f.png]]
+# [goto error]
+: [0;31m---------------------------------------------------------------------------[0m
+: [0;31mNameError[0m                                 Traceback (most recent call last)
+: Cell [0;32mIn [12], line 1[0m
+: [0;32m----> 1[0m [43mdf[49m[38;5;241m.[39miloc[:, [38;5;241m5[39m:[38;5;241m10[39m][38;5;241m.[39mplot(subplots[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+:
+: [0;31mNameError[0m: name 'df' is not defined
 :END:
 
 #+BEGIN_SRC python :session orgsession :async yes :pandoc t -n 1
@@ -142,10 +188,13 @@ CLOCK: [2022-12-02 Fri 13:56]
 
 #+RESULTS:
 :RESULTS:
-: array([<AxesSubplot: xlabel='Time:'>, <AxesSubplot: xlabel='Time:'>,
-:        <AxesSubplot: xlabel='Time:'>, <AxesSubplot: xlabel='Time:'>,
-:        <AxesSubplot: xlabel='Time:'>], dtype=object)
-[[file:./.ob-jupyter/9eedb860f2943fb483621aa8ac42d5d525be3ff5.png]]
+# [goto error]
+: [0;31m---------------------------------------------------------------------------[0m
+: [0;31mNameError[0m                                 Traceback (most recent call last)
+: Cell [0;32mIn [13], line 1[0m
+: [0;32m----> 1[0m [43mdf[49m[38;5;241m.[39miloc[:, [38;5;241m10[39m:[38;5;241m15[39m][38;5;241m.[39mplot(subplots[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+:
+: [0;31mNameError[0m: name 'df' is not defined
 :END:
 
 : array([<AxesSubplot: xlabel='Time:'>, <AxesSubplot: xlabel='Time:'>,
@@ -168,10 +217,13 @@ CLOCK: [2022-12-02 Fri 13:56]
 
 #+RESULTS:
 :RESULTS:
-: array([<AxesSubplot: xlabel='Time:'>, <AxesSubplot: xlabel='Time:'>,
-:        <AxesSubplot: xlabel='Time:'>, <AxesSubplot: xlabel='Time:'>,
-:        <AxesSubplot: xlabel='Time:'>], dtype=object)
-[[file:./.ob-jupyter/61004857a093c9e55ef0c337d404349112b5fd25.png]]
+# [goto error]
+: [0;31m---------------------------------------------------------------------------[0m
+: [0;31mNameError[0m                                 Traceback (most recent call last)
+: Cell [0;32mIn [14], line 1[0m
+: [0;32m----> 1[0m [43mdf[49m[38;5;241m.[39miloc[:, [38;5;241m20[39m:[38;5;241m25[39m][38;5;241m.[39mplot(subplots[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+:
+: [0;31mNameError[0m: name 'df' is not defined
 :END:
 
 : array([<AxesSubplot: xlabel='Time:'>, <AxesSubplot: xlabel='Time:'>,
@@ -193,10 +245,13 @@ CLOCK: [2022-12-02 Fri 13:56]
 
 #+RESULTS:
 :RESULTS:
-: array([<AxesSubplot: xlabel='Time:'>, <AxesSubplot: xlabel='Time:'>,
-:        <AxesSubplot: xlabel='Time:'>, <AxesSubplot: xlabel='Time:'>,
-:        <AxesSubplot: xlabel='Time:'>], dtype=object)
-[[file:./.ob-jupyter/c78664c14177725c1d46ea8d3af80692720bbe7b.png]]
+# [goto error]
+: [0;31m---------------------------------------------------------------------------[0m
+: [0;31mNameError[0m                                 Traceback (most recent call last)
+: Cell [0;32mIn [15], line 1[0m
+: [0;32m----> 1[0m [43mdf[49m[38;5;241m.[39miloc[:, [38;5;241m30[39m:[38;5;241m35[39m][38;5;241m.[39mplot(subplots[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+:
+: [0;31mNameError[0m: name 'df' is not defined
 :END:
 
 #+BEGIN_SRC python :session orgsession :async yes :pandoc t -n 1
@@ -205,10 +260,13 @@ CLOCK: [2022-12-02 Fri 13:56]
 
 #+RESULTS:
 :RESULTS:
-: array([<AxesSubplot: xlabel='Time:'>, <AxesSubplot: xlabel='Time:'>,
-:        <AxesSubplot: xlabel='Time:'>, <AxesSubplot: xlabel='Time:'>],
-:       dtype=object)
-[[file:./.ob-jupyter/f3458756cc748e4e9e3771708d35974a8e2e3956.png]]
+# [goto error]
+: [0;31m---------------------------------------------------------------------------[0m
+: [0;31mNameError[0m                                 Traceback (most recent call last)
+: Cell [0;32mIn [16], line 1[0m
+: [0;32m----> 1[0m [43mdf[49m[38;5;241m.[39miloc[:, [38;5;241m35[39m:][38;5;241m.[39mplot(subplots[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+:
+: [0;31mNameError[0m: name 'df' is not defined
 :END:
 
 ** Test with unstable case:
@@ -227,6 +285,53 @@ CLOCK: [2022-12-02 Fri 13:56]
 #+end_src
 
 #+RESULTS:
-: 0   -0.146852
-: 1    0.000000
-: Name: Bus_AT131_A130_STORF_CLT:10_FT:157__Load:_1.05.csv, dtype: float64
+:RESULTS:
+#+begin_src python :session orgsession :async yes :pandoc t -n 1
+df_no_zeros = df.drop(labels = ["VA_VATTENDRAGET_G1", "VA_STUPET_G3", "VA_HASTSJO_G1"], axis=1)
+#+end_src
+
+#+BEGIN_SRC python :session orgsession :async yes :pandoc t -n 1
+  corr = df_no_zeros.corr()
+  f = plt.figure(figsize=(20, 20))
+  plt.matshow(corr, fignum=f.number)
+  plt.xticks(range(df_no_zeros.select_dtypes(['numnber']).shape[1]), df_no_zeros.select_dtypes(['number']).columns, fontsize=14, rotation=45)
+  plt.yticks(range(df_no_zeros.select_dtypes(['number']).shape[1]), df_no_zeros.select_dtypes(['number']).columns, fontsize=14)
+  cb = plt.colorbar()
+  cb.ax.tick_params(labelsize=14)
+  plt.title('Correlation Matrix', fontsize=16);
+#+END_SRC
+
+#+RESULTS:
+[[file:./.ob-jupyter/98afc206bbda10ff61c9dd70cc3cb1a1477de37d.png]]
+
+#+begin_src python :session orgsession :async yes :pandoc t -n 1
+  df_no_zeros.plot(subplots=True)
+#+end_src
+
+#+BEGIN_SRC python :session orgsession :async yes :pandoc t -n 1
+  df2 = get_gen_df(0)
+#+END_SRC
+
+#+BEGIN_SRC python :session orgsession :async yes :pandoc t -n 1
+  df2_nz = drop_zeros(df2)
+#+END_SRC
+
+#+RESULTS:
+
+#+begin_src python :session orgsession :async yes :pandoc t -n 1
+  corr = df2_nz.corr()
+  f = plt.figure(figsize=(20, 20))
+  plt.matshow(corr, fignum=f.number)
+  plt.xticks(range(df2_nz.select_dtypes(['number']).shape[1]), df2_nz.select_dtypes(['number']).columns, fontsize=14, rotation=45)
+  plt.yticks(range(df2_nz.select_dtypes(['number']).shape[1]), df2_nz.select_dtypes(['number']).columns, fontsize=14)
+  cb = plt.colorbar()
+  cb.ax.tick_params(labelsize=14)
+  plt.title('Correlation Matrix', fontsize=16);
+#+end_src
+
+#+RESULTS:
+[[file:./.ob-jupyter/ce7c48c1a8454b007385012720e8ed4ee1ea21af.png]]
+:RESULTS:
+:END:
+#+RESULTS:
+: 0
