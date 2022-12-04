@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       ae97993d-3af4-4145-a8de-01856f7135dd
+:END:
+#+title: Notebooks-Aristotle
+#+date: [2022-11-30 Wed 11:46]
+* List:
+- [[id:79f2ac18-1b46-4244-8927-783414c32730][Data Cleaning]]
+- [[id:96769910-d0b7-4f7d-a240-1a91eb96d0fc][Exploration and clustering]]

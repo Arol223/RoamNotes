@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       9a4bec48-66e4-46d7-960d-9d3bb173aa57
+:END:
+#+title: Courses
+#+date: [2022-11-28 Mon 16:31]
+
+* [[id:a0084b6f-1d97-453d-b615-c6931e1a5d98][Basic Communication & Teaching]]

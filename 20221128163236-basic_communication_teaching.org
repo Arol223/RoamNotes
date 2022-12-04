@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       a0084b6f-1d97-453d-b615-c6931e1a5d98
+:END:
+#+title: Basic Communication & Teaching
+#+date: [2022-11-28 Mon 16:32]
+
+
+* Teaching activity assignment:
+[[id:2ed68548-2db1-4504-b483-39275e09c6db][Planned Teaching Activity]]

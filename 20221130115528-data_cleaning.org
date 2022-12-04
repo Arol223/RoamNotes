@@ -1,0 +1,170 @@
+:PROPERTIES:
+:ID:       79f2ac18-1b46-4244-8927-783414c32730
+:END:
+#+title: Data Cleaning
+#+date: [2022-11-30 Wed 11:55]
+
+#+BEGIN_SRC python :session orgsession :async yes
+  import pandas as pd
+  from matplotlib import pyplot as plt
+  import os
+  import re
+  import numpy as np
+  from time import sleep
+#+END_SRC
+
+#+RESULTS:
+
+#+BEGIN_SRC python :session orgsession :async yes
+  data_file_path = "~/dev/Aristotle/DataFiles/DataFiles/2022-11-28_shrtCLT/"
+  data_files = os.listdir(data_file_path)
+  cleaned_file_dir = "~/dev/Aristotle/CleanedDataFiles/2022-11-28_shrtCLT/"
+  full_clean_files = cleaned_file_dir + "Full/"
+  gen_bus_files = "~/dev/Aristotle/GeneratorBusFiles/"
+  bus_file = "~/dev/Aristotle/ARISTO_BUSES.txt"
+  cleaned_list_dir = os.listdir(cleaned_file_dir)
+  generating_unit_file = "~/dev/Aristotle/ARISTO_GENERATING_UNITS.txt"
+  cleaned_generator_folder = cleaned_file_dir + "Generators/"
+  generator_files = os.listdir(cleaned_generator_folder)
+
+#+END_SRC
+
+#+RESULTS:
+
+* List all datafiles
+
+#+BEGIN_SRC python :session orgsession :async yes
+  generator_list = []
+  with open(generating_unit_file) as gf:
+      for line in gf:
+          generator_list.append(line.strip())
+
+  print(generator_list)
+#+END_SRC
+#+BEGIN_SRC python :session orgsession :async yes
+  def clean_index(df):
+      """Clean the time column to make it start (close) to 0 and format the milliseconds correctly"""
+      newind = np.zeros(df.index.shape)
+      base_secs = int(str(df.index[0]).split('.')[0])
+      for cnt, time in enumerate(df.index):
+          time_str = str(time).split('.')
+          if len(time_str[1]) == 1:
+              time_str[1] = '0' + time_str[1]
+              newind[cnt] = np.round((float(time_str[0] + '.' + time_str[1]) - base_secs), decimals=2)
+      df.index = newind
+#+END_SRC
+
+#+RESULTS:
+** Remove low voltage buses from bus file:
+#+BEGIN_SRC python :session orgsession :async yes
+  def rm_lowU(df, busfile=bus_file):
+      bus_list = []
+      with open(bus_file) as bf:
+          for line in bf:
+              bus_list.append(line.strip())
+      drop_list = [col for i, col in enumerate(df.columns) if col.split("_", 1)[1] not in (bus_list + generator_list)]
+      df.drop(columns=drop_list, inplace=True)
+#+END_SRC
+
+#+RESULTS:
+** Drop all zero or nan columns:
+#+BEGIN_SRC python :session orgsession :async yes
+  def drop_zeros(df):
+      """ Drop all zero and nan columns"""
+      print(((df==0).sum()==df.shape[0]).items())
+      zero_cols = [col for col, is_zero in ((df == 0).sum() == df.shape[0]).items() if is_zero]
+      zero_cols_nopref = list(set([col.split('_', 1)[1] for col in zero_cols]))
+      zero_cols_new = []
+      for col in zero_cols_nopref:
+          acol = "VA_" + col
+          mcol = "VM_" + col
+          if col_iszero(df[mcol]): # This makes sure that columns are only dropped if voltage magnitude is zero
+              zero_cols_new.append(acol)
+              zero_cols_new.append(mcol)
+      df.drop(labels=zero_cols_new, axis=1, inplace=True)
+      df.dropna(axis=1, inplace=True)
+#+END_SRC
+
+#+RESULTS:
+** Check if column is zero:
+#+BEGIN_SRC python :session orgsession :async yes
+  def col_iszero(col):
+      """check if a column is all zero"""
+      nzeros = sum(col==0)
+      return nzeros == col.shape[0]
+#+END_SRC
+
+#+RESULTS:
+** Separate the generator buses:
+#+BEGIN_SRC python :session orgsession :async yes
+  def get_generator_cols(df, verbose=False):
+    gen_cols = []
+    for col in df.columns:
+      try:
+        if col.split("_", 1)[1] in generator_list:
+          gen_cols.append(col)
+      except:
+        if verbose:
+          print("One of the columns had a weird name, exception caught")
+    gen_df = df[gen_cols]
+   # print(gen_cols)
+    df = df.drop(labels = gen_cols, axis=1)
+    return gen_df, df
+#+END_SRC
+
+#+RESULTS:
+
+#+RESULTS:
+#+BEGIN_SRC python :session orgsession :async yes :pandoc t
+  for i, file in enumerate(data_files):
+      print(i)
+      path = data_file_path + file
+#      print(path)
+      df = pd.read_csv(path, index_col="Time:", skipinitialspace=True)
+      gen_df, df = get_generator_cols(df)
+      drop_zeros(df)
+      rm_lowU(df)
+      gen_df.to_csv(cleaned_generator_folder + file)
+      df.to_csv(full_clean_files + file)
+#+END_SRC
+* Calculating stability index:
+
+#+BEGIN_SRC python :session orgsession :async yes :pandoc t
+  def stab_index(df, lim=180, abs_clt=0):
+    """Caclulate the stability index of a df containing the rotor angles from a case"""
+    sub = df.to_numpy()[abs_clt:, :]
+    diff_mat = np.zeros([sub.shape[0], np.sum(np.arange(sub.shape[1]))])
+    for i in range(sub.shape[1]):
+      for j in range(i + 1, sub.shape[1]):
+        diff_mat[:, i+j-1] = np.abs(sub[:,i] - sub[:,j])
+
+    delta_max = np.max(np.max(diff_mat))
+    stab_ind = (lim - delta_max)/(lim + delta_max)
+    print(f"Stability index is {stab_ind}, maximum delta is {delta_max}")
+    return stab_ind
+#+END_SRC
+
+#+RESULTS:
+** Counting unstable cases
+#+begin_src python :session orgsession :async yes :pandoc t
+  stable_count=[]
+  stab_inds = []
+  generator_files = os.listdir(cleaned_generator_folder)
+  for file in generator_files:
+      print(file)
+      df = pd.read_csv(cleaned_generator_folder + file, index_col = 0)
+      stind = stab_index(df)
+      stab_inds.append(stind)
+      if stind > 0:
+          stable_count.append(1)
+      else:
+          stable_count.append(0)
+
+  print(f"out of {len(stable_count)} cases {sum(stable_count)} are stable ")
+#+end_src
+** Writing stability data
+#+BEGIN_SRC python :session orgsession :async yes :pandoc t
+  stabmat = np.array([stab_inds, stable_count])
+  stabdf = pd.DataFrame(stabmat, columns = generator_files)
+  stabdf.to_csv(cleaned_file_dir + "stability_data.csv")
+#+END_SRC
