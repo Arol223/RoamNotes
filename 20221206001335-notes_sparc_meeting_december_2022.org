@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       1ca191dc-6de1-4cfa-86cf-feab58823523
+:END:
+#+title: Notes sparc meeting december 2022
+#+date: [2022-12-06 Tue 00:13]
+[[id:e6e3dada-dc11-4165-b202-45e09ded14d7][anomaly detection]]

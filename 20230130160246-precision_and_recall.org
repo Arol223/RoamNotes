@@ -1,0 +1,34 @@
+:PROPERTIES:
+:ID:       bae2b877-8660-4545-b5ad-707168251374
+:END:
+#+title: Precision and Recall
+#+date: [2023-01-30 Mon 16:02]
+
+* Precision:
+
+** Glossary:
+- TP = True Positive
+- FP = False Positive
+** Definition:
+- $\mathrm{Precision} = \frac{\mathrm{TP}}{\mathrm{TP + FP}}$
+- Interpretation: The precision gives the probability that a
+  classification result saying positive is a true positive
+
+
+
+* Recall:
+** Glossary:
+- FN = False Negative
+
+** Definition:
+- $\mathrm{Recall} = \frac{\mathrm{TP}}{\mathrm{TP + FN}}$
+- Interpretation: The recall answers the question what proportion of
+  actual positives was identified correctly?
+
+- Example: Power System Classifier has a recall of 0.11 for unstable
+  cases. This means that it correctly identifies 11% of all unstable
+  cases.
+
+Precsion and recall are often in tension, so improving recall may
+worsen precision.
+more info: [[https://developers.google.com/machine-learning/crash-course/classification/precision-and-recall][Google developers page on precision and recall]]

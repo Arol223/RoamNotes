@@ -1,0 +1,13 @@
+(undo-tree-save-format-version . 1)
+"b50106e3f39978fc4f432bae60f4837b24b41653"
+[nil nil nil nil (25638 39589 302221 218000) 0 nil]
+([nil nil ((#("%?" 0 2 (fontified nil line-prefix "" wrap-prefix "")) . -122) (124 . 124) (122 . 125) (#(":ID: dec2c3c9-6dce-48d7-bd9d-df80ca4e88c7" 0 1 (fontified nil line-prefix "" wrap-prefix "") 1 3 (fontified nil line-prefix "" wrap-prefix "") 3 4 (fontified nil line-prefix "" wrap-prefix "") 4 5 (fontified nil line-prefix "" wrap-prefix "") 5 41 (fontified nil line-prefix "" wrap-prefix "")) . -14) (14 . 102) (14 . 15) (1 . 20) (1 . 55) (t . -1)) nil (25638 39589 302219 242000) 0 nil])
+([nil nil ((122 . 124)) nil (25638 39589 302216 633000) 0 nil])
+([nil nil ((124 . 125)) nil (25638 39589 302215 453000) 0 nil])
+([nil nil ((#("C" 0 1 (fontified t line-prefix "" wrap-prefix #("* " 0 2 (face org-indent)) font-lock-fontified t face org-level-1)) . -124) (undo-tree-id0 . -1) (undo-tree-id1 . -1) 125) nil (25638 39589 302213 719000) 0 nil])
+([nil nil ((124 . 177)) nil (25638 39589 302196 516000) 0 nil])
+([nil nil ((177 . 178)) nil (25638 39589 302182 153000) 0 nil])
+([nil nil ((178 . 252)) nil (25638 39589 302181 66000) 0 nil])
+([nil nil ((178 . 179)) nil (25638 39589 302179 22000) 0 nil])
+([nil current ((179 . 180)) nil (25638 39589 302173 528000) 0 nil])
+nil

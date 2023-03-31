@@ -1,0 +1,21 @@
+(undo-tree-save-format-version . 1)
+"c179ec5c7ebeae1e921d1ae65fff3ce562364684"
+[nil nil nil nil (25479 11241 855477 507000) 0 nil]
+([nil nil ((205 . 206) (t 25471 33191 100703 557000)) nil (25479 11241 855476 159000) 0 nil])
+([nil nil ((206 . 207)) nil (25479 11241 855474 790000) 0 nil])
+([nil nil ((#("h" 0 1 (wrap-prefix "" line-prefix "" fontified t)) . -206) (undo-tree-id10 . -1) (undo-tree-id11 . -1) (undo-tree-id12 . -1) 207) nil (25479 11241 855473 474000) 0 nil])
+([nil nil ((206 . 211)) nil (25479 11241 855470 173000) 0 nil])
+([nil nil ((apply yas--snippet-revive 206 234 #s(yas--snippet nil nil #s(yas--exit 224 nil) 1 nil nil nil nil)) (apply yas--take-care-of-redo #s(yas--snippet nil nil #s(yas--exit 224 nil) 1 nil nil nil nil)) (206 . 234) (#("shell" 0 5 (wrap-prefix "" line-prefix "" fontified t)) . 206) (undo-tree-id0 . -4) (undo-tree-id1 . -5) (undo-tree-id2 . -3) (undo-tree-id3 . -3) (undo-tree-id4 . -3) (undo-tree-id5 . -3) (undo-tree-id6 . -4) (undo-tree-id7 . -4) (undo-tree-id8 . -5) (undo-tree-id9 . -5) 211) nil (25479 11241 855468 224000) 0 nil])
+([nil nil ((224 . 230)) nil (25479 11241 855445 960000) 0 nil])
+([nil nil ((230 . 236)) nil (25479 11241 855444 901000) 0 nil])
+([nil nil ((236 . 237)) nil (25479 11241 855443 775000) 0 nil])
+([nil nil ((224 . 226)) nil (25479 11241 855442 379000) 0 nil])
+([nil nil ((262 . 264) (251 . 329) (#("
+" 0 1 (wrap-prefix "" line-prefix "" fontified nil)) . 251) (249 . 252) 239) nil (25479 11241 855437 15000) 0 nil])
+([nil nil ((262 . 264) (262 . 278) (#(": /home/arvid/.local/share/virtualenvs/Aristotle-DaSm-LbO/bin/python
+" 0 2 (fontified t line-prefix "" wrap-prefix "" face org-code jupyter-ansi t) 2 3 (fontified t line-prefix "" wrap-prefix "" font-lock-multiline t org-emphasis t face org-code jupyter-ansi t) 3 13 (fontified t line-prefix "" wrap-prefix "" face org-code font-lock-multiline t org-emphasis t jupyter-ansi t) 13 14 (fontified t line-prefix "" wrap-prefix "" font-lock-multiline t org-emphasis t face org-code jupyter-ansi t) 14 69 (fontified t line-prefix "" wrap-prefix "" face org-code jupyter-ansi t)) . 262) 239 (t 25479 11241 853027 616000)) nil (25479 13398 809873 397000) 0 nil])
+([nil nil ((262 . 264) (262 . 278) (#(": /usr/bin/python
+" 0 2 (fontified t line-prefix "" wrap-prefix "" face org-code jupyter-ansi t) 2 18 (fontified t line-prefix "" wrap-prefix "" face org-code jupyter-ansi t)) . 262) 239) nil (25479 13398 809870 887000) 0 nil])
+([nil current ((262 . 264) (262 . 329) (#(": /usr/bin/python
+" 0 2 (fontified t line-prefix "" wrap-prefix "" face org-code jupyter-ansi t) 2 18 (fontified t line-prefix "" wrap-prefix "" face org-code jupyter-ansi t)) . 262) 239) nil (25479 13398 809864 76000) 0 nil])
+nil

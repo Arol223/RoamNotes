@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       e98e51c7-a597-429b-a4da-022e2ba74b3e
+:END:
+#+title: Solid short circuit
+#+date: [2022-12-09 Fri 16:19]
+A solid short circuit means that the fault impedance, $Z_{f} = 0$

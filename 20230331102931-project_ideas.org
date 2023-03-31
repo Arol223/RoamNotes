@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       dec2c3c9-6dce-48d7-bd9d-df80ca4e88c7
+:END:
+#+title: Project Ideas
+#+date: [2023-03-31 Fri 10:29]
+* [[id:1a87ad5b-10b9-4f40-9667-fae774005f78][Topology]]
+* [[id:5192f5e2-cfd5-416d-8c4b-6ee7dd5815be][Under Frequency Load Shedding]]

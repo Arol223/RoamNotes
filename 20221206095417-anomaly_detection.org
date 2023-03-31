@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       e6e3dada-dc11-4165-b202-45e09ded14d7
+:END:
+#+title: anomaly detection
+#+date: [2022-12-06 Tue 09:54]
+- Preprint: Hybrid AI-based anomaly detection

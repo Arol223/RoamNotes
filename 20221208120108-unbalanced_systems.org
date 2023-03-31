@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       df62b447-c84d-4b0e-8818-b11b5d20ecb0
+:END:
+#+title: Unbalanced Systems
+#+date: [2022-12-08 Thu 12:01]
+
+* Motivation:
+- Unbalanced systems are difficult to analyse; unbalanced means three
+  phases are not equal in magnitude and are not symmetrically phase displaced
+- Any unbalanced system of $N$ phasors can be represented by N systems
+  of balanced phasors
+- In case of unsymmetrical 3-phase system: 3 systems of 3 balanced
+  phasors
+- The components are called /positive/ sequence, /negative/  sequence and
+  /zero/ sequence
+  - Positive sequence has same sequence as original system,
+    i.e. /a-b-c/, negative sequence /a-c-b/, both with $120^{\circ}$  phase
+    shift between phases, and zero sequence has all components in phase
+-
+
+- [[id:23c4f85a-525b-4b7f-ab10-7039f3158148][Example zero sequence network]]

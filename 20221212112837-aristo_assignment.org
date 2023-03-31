@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       cfd2c2f1-81f8-4e95-b463-f05d4a70755c
+:END:
+#+title: Aristo Assignment
+#+date: [2022-12-12 Mon 11:28]
+
+* Unclear questions:
+- Where is the frequency measured? Why?
+  The frequency in ARISTO is measured at the generators or generator
+  buses. The why is more unclear, as the frequency could in principle
+  be measured anywhere. As long as the system is synchronised, all
+  generators should have the same frequency.
+
+ - Need to revise how generator control works (if this is one of the
+   assignments I'll be responsible for), e.g. how droop is calculated
+   etc, and in addition how the block diagrams for governors work.
+
+  Nothing else unclear in this assignment

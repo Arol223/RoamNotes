@@ -1,0 +1,91 @@
+:PROPERTIES:
+:ID:       2ed68548-2db1-4504-b483-39275e09c6db
+:END:
+#+title: Planned Teaching Activity
+#+date: [2022-11-28 Mon 16:33]
+
+
+* Adjusted planning:
+** Lesson details:
+1. Course: Basic concepts in power system control
+2. Title of Lesson: Introduction to voltage control
+3. Class/Year: 4
+4. Course concepts:
+   1. Importance of maintaining steady voltages in the grid
+   2. Connection between reactive power and voltage levels
+   3. How local voltage/reactive power control contributes to lower
+      transmission costs and reduced energy consumption
+5. Aims and objectives of Teaching:
+   - The students will learn about some of the limitations of
+     transmitting power over long distances
+   - The students will learn about some of the solutions to this problem
+   - The students will become aware of economic factors behind why
+     certain technologies might be chosen
+   - Through using the ARISTO power system simulator, the students
+     will develop an understanding of how these control measures work
+     in practice, and what the limitations of the different
+     technologies are
+
+
+** Teaching Approach:
+*** Teaching phase:
+1. Introduction with group discussion of why stable voltages are
+   necessary (1-2 minutes)
+   1. Electronic devices, machines and equipment are designed to
+      operate within a narrow range
+   2. Higher voltage leads to lower losses (High currents heat lines
+      etc) (Why transformers are used)
+   3. Over voltage leads to arcing, short circuit faults etc
+      (insulators less effective)
+2. Introduce reactive power
+   1. $\bar{S} = U\cdot I(\cos\theta + i\sin\theta) \equiv P + iQ$ sign of Q
+      determines "production" or "consumption"
+      power is created by the current that is out of phase with the
+      voltage, current ahead of voltage \rightarrow production, otherwise consumption
+   2. Still creates losses when transmitted by $P_{loss} = IR^{2}$
+   3. Demonstrate with circuit simulation how having shunt capacitor
+      will phase compensate and increase voltage
+   4. Relate high inductance to high reactive power consumption
+3. Discuss shunt capacitors
+   1. Introduce shunt capacitors, e.g. "This is one of the ways it is
+      done in the real grid"
+   2. Show in ARISTO: This is what happens when reactive load increases
+   3. Demonstrate switching on shunt capacitors
+4. Introduce ARISTO-exercise
+   1. Your job is to get the voltages is this bus to nominal level
+
+*** Teaching and learning approach
+1. Individual brainstorming
+2. Group discussion
+3. Visual demonstration
+
+
+*** Media/Tools:
+1. Online circuit simulator for demonstration
+2. Offline power system simulator to try control concepts
+3. Slides, Menti?
+** Skills & Competences
+*** Cognitive Knowledge/Objective
+1. Understand how phase compensation is used to regulate voltage,
+   produce reactive power
+2. Understand how shunts can be used for phase compensation/voltage
+   control
+*** Social/Communication:
+1. Collaboration
+2. Group Dynamics
+*** Meta-Cognitive
+1. Self esteem: developing and enhancing understanding through practice
+2. Critical thinking through reasoning about which actions are
+   appropriate for a certain situation
+
+** Assessment
+- Short report on findings when working with the simulator
+
+
+
+* [[id:fdb9de99-cc05-46c1-8a18-70a2724ed9a7][Presentation]]
+
+
+
+
+

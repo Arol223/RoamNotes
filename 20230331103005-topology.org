@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       1a87ad5b-10b9-4f40-9667-fae774005f78
+:END:
+#+title: Topology
+#+date: [2023-03-31 Fri 10:30]
+* Use graph neural networks for fast topology detection/find topology changes

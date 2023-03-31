@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       e74d1697-1ff9-4bde-87f4-b5dd9afea94c
+:END:
+#+title: Communication assignment
+#+date: [2022-12-12 Mon 11:55]
+* Don't think I'll be teaching this?

@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       5192f5e2-cfd5-416d-8c4b-6ee7dd5815be
+:END:
+#+title: Under Frequency Load Shedding
+#+date: [2023-03-31 Fri 10:31]
+* Use some form of RL to find optimal load shedding strats
+** Maybe incorporate market data, i.e. best control action that restores system frquency and minimises cost

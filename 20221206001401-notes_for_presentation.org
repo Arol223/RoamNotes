@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       4d6a7353-a004-47cb-a0e1-57ddca78dc91
+:END:
+#+title: notes for presentation
+#+date: [2022-12-06 Tue 00:14]
+** new slide 1
+- Beskriva APIet
+- Vad jag gort, dvs skicka fault med viss clearingtime
+- Hur ser koden ut?
+** New slide 2
+- Datasetet jag skapat
+- Punkter, format

@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       7486aeb4-2e35-4926-b640-9ed752682e9e
+:END:
+#+title: EH2741_Teaching
+#+date: [2022-12-12 Mon 11:27]
+* Notes on ARISTO, comms and State Estimation assignments:
+- [[id:cfd2c2f1-81f8-4e95-b463-f05d4a70755c][Aristo Assignment]]
+- [[id:e74d1697-1ff9-4bde-87f4-b5dd9afea94c][Communication assignment]]
+
+
+* TODO
+** Create user accounts,
+** Update ARISTO How-to:
+Eventuellt hitta alternativ till X-MING
+** 15th lecture is state estimation, 20th-22nd february
+** Look into adding windpower to ARISTO
+** Add information about VPN-connection for students (so they can use aristo at home)
+[[https://www.lan.kth.se/vpn/][Explanatory page here]]

@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       23c4f85a-525b-4b7f-ab10-7039f3158148
+:END:
+#+title: Example zero sequence network
+#+date: [2022-12-13 Tue 14:05]
+
+
+* Transformer Equivalents:
+
+[[/media/sf_Aristotle/PowerSystemAnalysis/S3 Examples/UnbalancedSystem_images/zero_sequence_equivs.png]]
+[[/media/sf_Aristotle/PowerSystemAnalysis/S3 Examples/UnbalancedSystem_images/ExampleGrid.png]]
+[[/media/sf_Aristotle/PowerSystemAnalysis/S3 Examples/UnbalancedSystem_images/0seq_example_grid.png]]
+
+[[file:/media/sf_Aristotle/PowerSystemAnalysis/S3 Examples/UnbalancedSystem_images/ExampleQianwen_D-Y0-trafo.png]]
